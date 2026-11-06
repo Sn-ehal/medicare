@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="MediCare - Your trusted doctor management platform. Find doctors, book appointments, video consultations, lab tests and more." />
+  <title>MediCare – Doctor Management System</title>
+  <script>
+    // If opened via file:/// from Windows Explorer, redirect to local dev server
+    if (window.location.protocol === 'file:') {
+      window.location.href = 'http://localhost:3000';
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Fallback message for file:// protocol -->
+  <div id="file-protocol-warning"
+    style="display: none; position: fixed; inset: 0; background: #0f172a; color: white; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; z-index: 999999; display: none; align-items: center; justify-content: center; padding: 24px;">
+    <div
+      style="background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 40px; max-width: 520px; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.5);">
+      <div style="font-size: 56px; margin-bottom: 16px;">🏥</div>
+      <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 12px; color: #60a5fa; letter-spacing: -0.5px;">
+        MediCare Portal</h2>
+      <p style="color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+        React apps cannot be run directly via <strong style="color: #f87171;">file:///</strong> in the browser.<br />
+        Opening the live local server for you now...
+      </p>
+      <a id="redirect-link" href="http://localhost:3000"
+        style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #2563eb, #06b6d4); color: white; font-weight: 700; padding: 14px 32px; border-radius: 9999px; text-decoration: none; font-size: 16px; box-shadow: 0 10px 25px rgba(37,99,235,0.4);">
+        👉 Click to Open http://localhost:3000
+      </a>
+    </div>
+  </div>
+
+  <div id="root"></div>
+
+  <script>
+    if (window.location.protocol === 'file:') {
+      document.getElementById('file-protocol-warning').style.display = 'flex';
+    }
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

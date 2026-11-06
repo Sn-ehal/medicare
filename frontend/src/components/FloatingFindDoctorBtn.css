@@ -1,0 +1,219 @@
+/* =============================================
+   FLOATING "FIND DOCTOR NEAR YOU" BUTTON
+   Round shape button, smoothly expands into a
+   pill with text on hover
+   ============================================= */
+
+.floating-find-doctor {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 56px;
+  width: 56px; /* Perfect round circle at rest */
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(135deg, #00a0e3 0%, #2563eb 100%);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(0, 160, 227, 0.42), 0 4px 12px rgba(0, 0, 0, 0.16);
+  transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s ease,
+              border-color 0.3s ease;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  animation: floatBounce 4s ease-in-out infinite;
+}
+
+/* Pulsing Outer Glow Ring around the circular button */
+.floating-find-doctor::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid rgba(0, 160, 227, 0.5);
+  animation: pulseAuraBtn 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+  transition: opacity 0.3s ease, inset 0.3s ease;
+}
+
+/* Hover & Focus state: Expand smoothly into a pill */
+.floating-find-doctor:hover,
+.floating-find-doctor:focus-visible {
+  width: 252px; /* Expands to fit text + live dot comfortably */
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 42px rgba(0, 160, 227, 0.58), 0 6px 18px rgba(0, 0, 0, 0.22);
+  background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.floating-find-doctor:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+/* Center icon wrap */
+.floating-find-doctor__icon-wrap {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.floating-find-doctor:hover .floating-find-doctor__icon-wrap,
+.floating-find-doctor:focus-visible .floating-find-doctor__icon-wrap {
+  transform: scale(1.08);
+}
+
+.floating-find-doctor__icon {
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-find-doctor:hover .floating-find-doctor__icon,
+.floating-find-doctor:focus-visible .floating-find-doctor__icon {
+  transform: rotate(-10deg);
+}
+
+/* Online status badge on top-right of the circle */
+.floating-find-doctor__online-badge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.85);
+  animation: pulseDotLive 1.8s infinite;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Hide badge when expanded because the inline live-dot appears */
+.floating-find-doctor:hover .floating-find-doctor__online-badge,
+.floating-find-doctor:focus-visible .floating-find-doctor__online-badge {
+  opacity: 0;
+  transform: scale(0.3);
+  pointer-events: none;
+}
+
+/* Expanding label container */
+.floating-find-doctor__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: translateX(10px);
+  padding-right: 0;
+  transition: max-width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s ease,
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding-right 0.38s ease;
+}
+
+.floating-find-doctor:hover .floating-find-doctor__label,
+.floating-find-doctor:focus-visible .floating-find-doctor__label {
+  max-width: 200px;
+  opacity: 1;
+  transform: translateX(0);
+  padding-right: 18px;
+}
+
+/* Text */
+.floating-find-doctor__text {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Live Green Dot Badge in expanded text */
+.floating-find-doctor__live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseDotLive 1.8s infinite;
+  flex-shrink: 0;
+}
+
+/* Micro-animations */
+@keyframes floatBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseAuraBtn {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseDotLive {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .floating-find-doctor {
+    bottom: 20px;
+    right: 20px;
+    height: 52px;
+    width: 52px;
+  }
+
+  .floating-find-doctor:hover,
+  .floating-find-doctor:focus-visible {
+    width: 236px;
+  }
+
+  .floating-find-doctor__icon-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-find-doctor__online-badge {
+    top: 8px;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .floating-find-doctor__text {
+    font-size: 13.5px;
+  }
+}

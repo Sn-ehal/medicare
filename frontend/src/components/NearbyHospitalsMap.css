@@ -1,0 +1,826 @@
+/* =============================================
+   NEARBY HOSPITALS & CLINICS GOOGLE MAPS FINDER
+   ============================================= */
+
+.nearby-map-finder {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-2xl);
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--gradient-deep-blue);
+}
+
+/* Header */
+.nearby-map-finder__header {
+  margin-bottom: 24px;
+}
+
+.nearby-map-finder__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: var(--primary-glow);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+}
+
+.nearby-map-finder__pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: radarPulse 2s infinite;
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.nearby-map-finder__title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.nearby-map-finder__highlight {
+  background: var(--gradient-deep-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nearby-map-finder__subtitle {
+  font-size: 15px;
+  color: var(--gray-600);
+  max-width: 760px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+/* Location Status & Control Bar */
+.nearby-map-finder__control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  flex-wrap: wrap;
+}
+
+.nearby-map-finder__loc-status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nearby-map-finder__loc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-600);
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder__loc-icon--active {
+  background: var(--gradient-deep-blue);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+.nearby-map-finder__loc-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nearby-map-finder__loc-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--gray-400);
+}
+
+.nearby-map-finder__loc-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.nearby-map-finder__action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Location Form (Area Name & 6-Digit Pincode) */
+.nearby-map-finder__location-form {
+  margin-top: 20px;
+  margin-bottom: 14px;
+}
+
+.nearby-map-finder__location-inputs {
+  display: flex;
+  gap: 12px;
+  background: var(--white);
+  padding: 14px 16px;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--gray-200);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  align-items: flex-end;
+  flex-wrap: wrap;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.nearby-map-finder__location-inputs:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+}
+
+.nearby-map-finder__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nearby-map-finder__field--area {
+  flex: 2;
+  min-width: 220px;
+}
+
+.nearby-map-finder__field--pincode {
+  flex: 1;
+  min-width: 140px;
+}
+
+.nearby-map-finder__field-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--gray-500);
+}
+
+.nearby-map-finder__text-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--gray-900);
+  background: var(--gray-50);
+  outline: none;
+  font-family: inherit;
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder__text-input:focus {
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.nearby-map-finder__set-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: var(--gradient-deep-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-primary);
+  transition: all var(--transition-spring);
+  height: 41px;
+  white-space: nowrap;
+}
+
+.nearby-map-finder__set-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+}
+
+/* Quick Cities Row */
+.nearby-map-finder__quick-cities {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.nearby-map-finder__quick-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+
+.nearby-map-finder__city-pills {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.nearby-map-finder__city-pill {
+  padding: 5px 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  color: var(--gray-700);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder__city-pill:hover,
+.nearby-map-finder__city-pill--active {
+  background: var(--gradient-deep-blue);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+}
+
+.nearby-map-finder__external-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  background: var(--white);
+  color: var(--gray-700);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder__external-btn:hover {
+  background: var(--gray-50);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* =============================================
+   2 PRIMARY OPTIONS (HOSPITALS OR CLINICS)
+   ============================================= */
+
+.nearby-map-finder__two-options-section {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.nearby-map-finder__section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.nearby-map-finder__section-step {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: var(--primary);
+  color: var(--white);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+}
+
+.nearby-map-finder__section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+.nearby-map-finder__two-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.nearby-map-finder__main-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-spring);
+  position: relative;
+}
+
+.nearby-map-finder__main-option-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.12);
+}
+
+.nearby-map-finder__main-option-btn--active {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  border-color: var(--primary);
+  box-shadow: 0 8px 28px rgba(30, 64, 175, 0.22);
+}
+
+.nearby-map-finder__main-option-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+}
+
+.nearby-map-finder__main-option-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nearby-map-finder__main-option-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gray-900);
+}
+
+.nearby-map-finder__main-option-btn--active .nearby-map-finder__main-option-title {
+  color: var(--primary);
+}
+
+.nearby-map-finder__main-option-sub {
+  font-size: 12.5px;
+  color: var(--gray-500);
+  line-height: 1.35;
+}
+
+.nearby-map-finder__active-check {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--gradient-deep-blue);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* =============================================
+   SPECIALIZED SEARCH (DIRECT ON GOOGLE MAPS)
+   ============================================= */
+
+.nearby-map-finder__specialist-box {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-xl);
+}
+
+.nearby-map-finder__specialist-header {
+  margin-bottom: 14px;
+}
+
+.nearby-map-finder__specialist-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.nearby-map-finder__specialist-title {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 3px;
+}
+
+.nearby-map-finder__specialist-desc {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.4;
+}
+
+.nearby-map-finder__specialist-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.nearby-map-finder__spec-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder__spec-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.nearby-map-finder__spec-chip--active {
+  background: var(--gradient-deep-blue);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+}
+
+.nearby-map-finder__spec-arrow {
+  font-size: 12px;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.nearby-map-finder__spec-chip--active .nearby-map-finder__spec-arrow {
+  color: var(--white);
+}
+
+/* Custom Specialist Search Form */
+.nearby-map-finder__specialist-search-form {
+  display: flex;
+  gap: 12px;
+}
+
+.nearby-map-finder__input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  padding: 10px 18px;
+  transition: all var(--transition-base);
+  color: var(--gray-400);
+}
+
+.nearby-map-finder__input-wrap:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  color: var(--primary);
+}
+
+.nearby-map-finder__input-wrap input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--gray-800);
+  font-family: var(--font-primary);
+}
+
+.nearby-map-finder__clear-search {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.nearby-map-finder__clear-search:hover {
+  color: var(--gray-800);
+}
+
+.nearby-map-finder__specialist-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 22px;
+  background: var(--gradient-deep-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+.nearby-map-finder__specialist-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(30, 64, 175, 0.4);
+}
+
+/* =============================================
+   MAP META BAR & IFRAME
+   ============================================= */
+
+.nearby-map-finder__meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  font-size: 13.5px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  flex-wrap: wrap;
+}
+
+.nearby-map-finder__meta-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nearby-map-finder__meta-live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+  animation: radarPulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.nearby-map-finder__meta-tag {
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+.nearby-map-finder__meta-query {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.nearby-map-finder__meta-desc {
+  color: var(--gray-500);
+  font-size: 13px;
+}
+
+.nearby-map-finder__direct-gmaps-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--transition-base);
+}
+
+.nearby-map-finder__direct-gmaps-link:hover {
+  text-decoration: underline;
+  color: var(--primary-dark);
+}
+
+/* Map Container & Iframe */
+.nearby-map-finder__map-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1.5px solid var(--gray-200);
+  box-shadow: var(--shadow-lg);
+  background: #e5e7eb;
+}
+
+.nearby-map-finder__map-loader {
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 250, 252, 0.88);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 2;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.nearby-map-finder__radar-spin {
+  width: 44px;
+  height: 44px;
+  border: 3.5px solid var(--primary-glow);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nearby-map-finder__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Emergency Quick Cards */
+.nearby-map-finder__quick-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.nearby-quick-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--gray-200);
+  background: var(--gray-50);
+  transition: all var(--transition-base);
+}
+
+.nearby-quick-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.nearby-quick-card--emergency {
+  border-color: #fecaca;
+  background: #fff5f5;
+}
+
+.nearby-quick-card--directions {
+  border-color: #bfdbfe;
+  background: #f0f7ff;
+}
+
+.nearby-quick-card__icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.nearby-quick-card__body {
+  flex: 1;
+}
+
+.nearby-quick-card__body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 2px;
+}
+
+.nearby-quick-card__body p {
+  font-size: 12.5px;
+  color: var(--gray-600);
+  line-height: 1.4;
+}
+
+.nearby-quick-card__btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-base);
+}
+
+.nearby-quick-card__btn--red {
+  background: #ef4444;
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+}
+
+.nearby-quick-card__btn--red:hover {
+  background: #dc2626;
+  transform: scale(1.02);
+}
+
+.nearby-quick-card__btn--blue {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.35);
+}
+
+.nearby-quick-card__btn--blue:hover {
+  background: var(--primary-dark);
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nearby-map-finder {
+    padding: 24px 18px;
+  }
+  .nearby-map-finder__control-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nearby-map-finder__action-buttons {
+    flex-direction: column;
+  }
+  .nearby-map-finder__action-buttons button,
+  .nearby-map-finder__action-buttons a {
+    width: 100%;
+    justify-content: center;
+  }
+  .nearby-map-finder__two-options {
+    grid-template-columns: 1fr;
+  }
+  .nearby-map-finder__specialist-search-form {
+    flex-direction: column;
+  }
+  .nearby-map-finder__specialist-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .nearby-map-finder__map-container {
+    height: 380px;
+  }
+  .nearby-map-finder__meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

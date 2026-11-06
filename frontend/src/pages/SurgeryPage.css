@@ -1,0 +1,1073 @@
+/* =============================================================================
+   MEDICARE SURGERY CARE PAGE STYLESHEET
+   Sleek dark medical UI, glassmorphism, responsive grids & dynamic hover states
+   ============================================================================= */
+
+.surgery-page {
+  background-color: #0b1528;
+  color: #f1f5f9;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Container */
+.surgery-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Headings */
+.surgery-section-heading {
+  margin-bottom: 40px;
+}
+
+.surgery-section-heading.text-center {
+  text-align: center;
+}
+
+.surgery-section-heading h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.surgery-section-heading p {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Pills */
+.surgery-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.surgery-pill--blue {
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+}
+
+.surgery-pill--teal {
+  background: rgba(13, 148, 136, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  color: #2dd4bf;
+}
+
+.surgery-pill--gold {
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #facc15;
+}
+
+/* =============================================================================
+   1. HERO SECTION
+   ============================================================================= */
+.surgery-hero {
+  position: relative;
+  padding: 120px 0 60px;
+  background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.18) 0%, rgba(11, 21, 40, 0.95) 70%), #0b1528;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.surgery-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #93c5fd;
+  margin-bottom: 20px;
+}
+
+.surgery-hero__badge-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: heroPulse 1.8s infinite;
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+.surgery-hero__title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.surgery-hero__title span {
+  background: linear-gradient(135deg, #60a5fa, #2dd4bf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.surgery-hero__subtitle {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  max-width: 780px;
+  margin: 0 auto 36px;
+}
+
+.surgery-hero__subtitle strong {
+  color: #f87171;
+}
+
+.surgery-hero__cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.surgery-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.surgery-hero-btn--primary {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+}
+
+.surgery-hero-btn--primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #0284c7);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+}
+
+.surgery-hero-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.surgery-hero-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Hero Stats Strip */
+.surgery-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.surgery-stat-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 20px;
+  backdrop-filter: blur(10px);
+}
+
+.surgery-stat-num {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #60a5fa;
+  margin-bottom: 4px;
+}
+
+.surgery-stat-label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* =============================================================================
+   2. CLINICAL NOTICE STRIP
+   ============================================================================= */
+.surgery-notice-strip {
+  padding: 24px 0;
+  background: rgba(239, 68, 68, 0.05);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.surgery-notice-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.surgery-notice-card__icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.surgery-notice-card__content {
+  flex: 1;
+}
+
+.surgery-notice-card__content h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fca5a5;
+  margin: 0 0 6px;
+}
+
+.surgery-notice-card__content p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.surgery-notice-btn {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.surgery-notice-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* =============================================================================
+   3. 4-STEP SURGICAL PATHWAY
+   ============================================================================= */
+.surgery-pathway-section {
+  padding: 80px 0;
+  background: #0f1c34;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.surgery-pathway-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.pathway-step {
+  flex: 1;
+  min-width: 220px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px 20px;
+  position: relative;
+  transition: all 0.25s;
+}
+
+.pathway-step:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(96, 165, 250, 0.4);
+  transform: translateY(-4px);
+}
+
+.pathway-step__num {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.pathway-step__icon {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+}
+
+.pathway-step h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+.pathway-step p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.pathway-link {
+  color: #60a5fa;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.pathway-step__arrow {
+  color: #3b82f6;
+  font-size: 1.5rem;
+  font-weight: 900;
+  opacity: 0.6;
+}
+
+.surgery-main-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #2563eb, #14b8a6);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+  transition: all 0.25s;
+}
+
+.surgery-main-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.55);
+}
+
+/* =============================================================================
+   4. PARTNER HOSPITALS GRID
+   ============================================================================= */
+.surgery-hospitals-section {
+  padding: 80px 0;
+  background: #0b1528;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.surgery-hospitals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.surgery-hospital-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.surgery-hospital-card:hover {
+  border-color: rgba(45, 212, 191, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.surgery-hospital-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.surgery-hospital-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.surgery-hospital-rating {
+  font-size: 0.85rem;
+  color: #facc15;
+  font-weight: 600;
+}
+
+.surgery-hospital-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px;
+}
+
+.surgery-hospital-accred {
+  font-size: 0.85rem;
+  color: #60a5fa;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.surgery-hospital-tagline {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.surgery-hospital-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.surgery-feature-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+
+.surgery-hospital-cities {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.cities-label {
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-right: 6px;
+}
+
+.surgery-hospital-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.surgery-hospital-btn:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* =============================================================================
+   5. PROCEDURES SECTION
+   ============================================================================= */
+.surgery-procedures-section {
+  padding: 80px 0;
+  background: #0f1c34;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.surgery-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.surgery-filter-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.surgery-filter-pill:hover,
+.surgery-filter-pill--active {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.surgery-categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.surgery-category-block {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px 28px;
+}
+
+.surgery-category-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.category-icon {
+  font-size: 2rem;
+}
+
+.surgery-category-header h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.surgery-category-header p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.surgery-procedures-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.procedure-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 18px;
+  transition: all 0.2s;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.procedure-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.procedure-row__info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.procedure-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+}
+
+.procedure-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.proc-tech-badge,
+.proc-stay-badge,
+.proc-rating-badge {
+  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.proc-tech-badge {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+}
+
+.proc-stay-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+.proc-rating-badge {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+}
+
+.procedure-consult-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #93c5fd;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.procedure-consult-btn:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* =============================================================================
+   6. VERIFIED REVIEWS SECTION
+   ============================================================================= */
+.surgery-reviews-section {
+  padding: 80px 0;
+  background: #0b1528;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.surgery-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 22px;
+  margin-bottom: 40px;
+}
+
+.surgery-review-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.surgery-review-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(234, 179, 8, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.surgery-review-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.surgery-reviewer-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.surgery-reviewer-info {
+  flex: 1;
+}
+
+.reviewer-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.reviewer-location {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.surgery-review-stars {
+  color: #facc15;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.surgery-review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.meta-tag {
+  font-size: 0.78rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.meta-tag--procedure {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+}
+
+.meta-tag--hospital {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+.surgery-review-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  font-style: italic;
+  margin: 0 0 18px;
+  flex: 1;
+}
+
+.surgery-review-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+}
+
+.reviewer-doctor {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.reviewer-verified {
+  color: #10b981;
+  font-weight: 700;
+}
+
+/* Scorecard */
+.surgery-scorecard {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px 36px;
+  flex-wrap: wrap;
+}
+
+.scorecard-left {
+  text-align: center;
+  min-width: 160px;
+}
+
+.scorecard-score {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #facc15;
+  line-height: 1;
+}
+
+.scorecard-stars {
+  color: #facc15;
+  font-size: 1.2rem;
+  margin: 6px 0;
+}
+
+.scorecard-sub {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.scorecard-bars {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scorecard-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+}
+
+.scorecard-bar-item span:first-child {
+  width: 220px;
+}
+
+.bar-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #10b981);
+  border-radius: 9999px;
+}
+
+/* =============================================================================
+   7. CALL TO ACTION BANNER
+   ============================================================================= */
+.surgery-cta-banner {
+  padding: 60px 0;
+  background: #0f1c34;
+}
+
+.surgery-cta-box {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(13, 148, 136, 0.25)), #102a56;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 24px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
+}
+
+.surgery-cta-box__text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.cta-badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.surgery-cta-box__text h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+}
+
+.surgery-cta-box__text p {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.surgery-cta-box__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.surgery-cta-main-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.surgery-cta-main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.65);
+}
+
+.cta-assurance {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* =============================================================================
+   8. FAQ SECTION
+   ============================================================================= */
+.surgery-faq-section {
+  padding: 80px 0;
+  background: #0b1528;
+}
+
+.surgery-faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.surgery-faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.surgery-faq-item[open] {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.surgery-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: #ffffff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.surgery-faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  font-size: 0.8rem;
+  color: #60a5fa;
+  transition: transform 0.2s;
+}
+
+.surgery-faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.surgery-faq-answer {
+  padding: 0 22px 20px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.surgery-faq-answer p {
+  margin: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .surgery-hero__title {
+    font-size: 2.2rem;
+  }
+
+  .surgery-pathway-steps {
+    flex-direction: column;
+  }
+
+  .pathway-step__arrow {
+    transform: rotate(90deg);
+  }
+
+  .surgery-notice-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .surgery-cta-box {
+    padding: 32px 24px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .surgery-hero {
+    padding: 100px 0 40px;
+  }
+
+  .surgery-hero__title {
+    font-size: 1.8rem;
+  }
+
+  .surgery-hospitals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .procedure-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .procedure-consult-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <circle cx="80" cy="80" r="74" fill="#FFF7ED" />
+  <g fill="#F97316" stroke="#EA580C" stroke-width="2">
+    <!-- Top bone -->
+    <rect x="74" y="36" width="12" height="38" rx="5" />
+    <circle cx="70" cy="36" r="8" />
+    <circle cx="90" cy="36" r="8" />
+    <!-- Knee / Joint capsule -->
+    <circle cx="80" cy="80" r="10" fill="#FDBA74" />
+    <!-- Bottom bone -->
+    <rect x="74" y="86" width="12" height="38" rx="5" />
+    <circle cx="70" cy="124" r="8" />
+    <circle cx="90" cy="124" r="8" />
+  </g>
+  <!-- Joint spark -->
+  <path d="M60 80 L66 80 M94 80 L100 80 M64 70 L70 74 M96 70 L90 74" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" />
+</svg>

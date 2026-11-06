@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <circle cx="80" cy="80" r="74" fill="#F8FAFC" />
+  <!-- Esophagus and Stomach -->
+  <path d="M74 36 L74 54 C74 54 60 58 52 72 C44 86 48 106 62 114 C76 122 96 120 108 108 C118 96 116 78 106 66 C96 54 84 56 84 54 L84 36" 
+        fill="#FDE68A" stroke="#D97706" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Duodenum -->
+  <path d="M106 100 C114 104 116 114 112 122" stroke="#D97706" stroke-width="3" stroke-linecap="round" fill="none" />
+  <circle cx="76" cy="86" r="3" fill="#D97706" />
+  <circle cx="86" cy="92" r="3.5" fill="#D97706" />
+</svg>
