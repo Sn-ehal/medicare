@@ -32,6 +32,14 @@ app.use(
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// Normalize duplicate slashes in incoming request URLs (e.g. //api -> /api)
+app.use((req, res, next) => {
+  if (req.url.startsWith('//')) {
+    req.url = req.url.replace(/^\/+/, '/')
+  }
+  next()
+})
+
 // Simple request logging
 app.use((req, res, next) => {
   const time = new Date().toLocaleTimeString()

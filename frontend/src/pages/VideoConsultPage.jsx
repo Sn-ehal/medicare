@@ -11,7 +11,7 @@ import {
 } from '../utils/timeSlotHelper'
 import './VideoConsultPage.css'
 
-const BACKEND_URL =
+const RAW_BACKEND_URL =
   import.meta.env.VITE_API_URL ||
   (typeof window !== 'undefined' &&
     (window.location.hostname === 'localhost' ||
@@ -19,6 +19,8 @@ const BACKEND_URL =
       window.location.hostname === '0.0.0.0')
     ? 'http://localhost:5000'
     : '')
+
+const BACKEND_URL = RAW_BACKEND_URL.replace(/\/+$/, '')
 
 // Default fallback 1 doctor per specialty (13 doctors)
 const DEFAULT_VIDEO_DOCTORS = [
